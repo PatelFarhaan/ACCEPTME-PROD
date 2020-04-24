@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-5" id="pricing-page-top">
+            <div class="col-md-12 text-center">
+                <p class="text-white animated bounceInDown slow display-2 font-heading">Pricing </p>
+                <p class="animated pulse infinite slow delay-5s text-white mb-4">
+                    Please ensure to take a screenshot once you make a payment and send the screenshot to <a
+                        href="mailto:Acceptmeinfo@gmail.com"
+                        class="font-weight-bold text-warning">Acceptmeinfo@gmail.com</a>&nbsp;with your Instagram ID
+                    to get started Instantly.</p>
+                <div class="card-deck">
+                    <div class="card Pricing-card animated slideInLeft slow">
+                        <h3 class="card-header font-heading">For Single Account</h3>
+                        <div class="card-body">
+                            <h2 class="card-title font-body"><span style="text-decoration: none">₹400 Only</span>
+                            </h2>
+                            <h4 class="card-text font-body">Unlimited accepts</h4>
+                            <p class="card-text font-text">Validity: 15 (Fifteen) Days</p>
+                        </div>
+                        <div class="card-footer">
+                            <p class="p-2">
+                                Click on: <br>
+                                <a href="https://kutt.it/am400" class="btn pricing-btn mt-3" target="_blank">Pay via
+                                    InstaMojo</a>
+                            </p>
+
+                            <p class="badge bg-secondary p-2 rounded shadow-lg">
+                                Or scan: <br> <br> <img src="https://i.postimg.cc/tCRk5GwN/am400.png" alt="am400"
+                                                        class="img-fluid" title="open your camera/QR code app and scan me">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card Pricing-card animated slideInRight slow">
+                        <h3 class="card-header font-heading">For Single Account</h3>
+                        <div class="card-body">
+                            <h2 class="card-title font-body"><span style="text-decoration: none">₹600 Only</span>
+                            </h2>
+                            <h4 class="card-text font-body">Unlimited accepts</h4>
+                            <p class="card-text font-text">Validity: 30 (Thirty) Days</p>
+                        </div>
+                        <div class="card-footer">
+                            <p class="p-2">
+                                Click on: <br>
+                                <a href="https://kutt.it/am600" class="btn pricing-btn mt-3" target="_blank">Pay via
+                                    InstaMojo</a>
+                            </p>
+                            <p class="badge bg-secondary p-2 rounded shadow-lg">
+                                Or scan: <br> <br> <img src="https://i.postimg.cc/BZBNHnYv/am600.png" alt="am600"
+                                                        class="img-fluid" title="open your camera/QR code app and scan me">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            <p class="text-white text-center">For subscriptions of multiple account, kindly drop an email to us
+                at <a href="mailto:Acceptmeinfo@gmail.com"
+                      class="font-weight-bold text-warning">Acceptmeinfo@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="push"></div>
+    {% if session["message"] %}
+    <div class="bg-white text-center">
+        <p class="text-danger p-2 ">{{ session["message"] }}</p>
+    </div>
+{% endif %}
+{% endblock %}

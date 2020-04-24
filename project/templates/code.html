@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+    <form method="POST" class="text-center"
+          name="loginForm" autocomplete="off">
+        <br>
+        <br>
+        <h1>Please select where do you want to receive your verification code?</h1>
+        <input type="submit" name="action" value="email" class="loginBtn"><br><br>
+        <input type="submit" name="action" value="phone" class="loginBtn"> <br><br>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block content %}
+
+    <form method="POST" class="text-center"
+          name="loginForm" autocomplete="off">
+        <br>
+        <br>
+        <h1>Please enter the verification code sent to you.</h1>
+        <input type="password" class="" id="loginPW"
+               name="userLoginPassword" title="Please enter your password"> <span toggle="#loginPW"
+                                                                                  class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
+    <br>
+     <button type="submit" id="loginBtn" class="loginBtn">Submit</button> <br><br>
+    </form>
+
+{% endblock %}

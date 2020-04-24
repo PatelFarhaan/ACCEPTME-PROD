@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{ url_for('admin.login') }}" method="POST" class="text-center" name="loginForm" autocomplete="off">
+                <input type="text" name="admin_email" id="loginUN" placeholder="ENTER YOUR ADMIN EMAIL" > <br>
+                <br>
+                <input type="password" name="admin_password" id="loginUN" placeholder="ENTER YOUR ADMIN PASSWORD" > <br><br>
+                <button type="submit" id="loginBtn" class="loginBtn">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="push"></div>
+{% endblock %}
