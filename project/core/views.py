@@ -12,6 +12,10 @@ from flask import render_template, Blueprint, request, url_for, redirect, sessio
 core_blueprint = Blueprint('core', __name__, template_folder='templates', static_folder='static')
 
 
+@core_blueprint.route('/test')
+def test():
+    return render_template('test.html')
+
 @core_blueprint.route('/', methods=['GET','POST'])
 def index():
     if request.method == "POST":
