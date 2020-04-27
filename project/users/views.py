@@ -113,7 +113,10 @@ def logout():
         instagram_username = current_user.insta_username
         if current_user.is_authenticated():
             client.delete(instagram_username)
+            session.clear()
         logout_user()
+        client.delete(instagram_username)
+        session.clear()
     except:
         pass
     return redirect(url_for('core.index'))

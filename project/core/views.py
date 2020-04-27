@@ -32,7 +32,6 @@ def index():
             session["message"] = "Please subscribe to login"
             return redirect(url_for('core.pricing'))
 
-        global bot_obj
         bot_obj = bot()
         resp = bot_obj.login(username=instagram_username, password=instagram_password, ask_for_code=True)
         cl_obj = client.get(instagram_username)
@@ -59,7 +58,10 @@ def index():
             if current_user.is_authenticated:
                 instagram_username = current_user.insta_username
                 client.delete(instagram_username)
+                session.clear()
                 logout_user()
+            client.delete(current_user)
+            session.clear()
         except:
             pass
         return render_template('index.html', page="index", errors=[], **default_args, current_user=current_user)
@@ -88,9 +90,11 @@ def verify_code():
                 login_user(user=user)
                 return redirect(url_for('users.accept'))
             else:
-                return render_template("index.html", page="index", errors="Wrong Code", **default_args)
+                return redirect(url_for('core.index'))
+                # return render_template("index.html", page="index", errors="Wrong Code", **default_args)
         else:
-            return render_template("index.html", page="index", errors="Wrong Code", **default_args)
+            return redirect(url_for('core.index'))
+            # return render_template("index.html", page="index", errors="Wrong Code", **default_args)
 
 
     elif request.method == "GET":
