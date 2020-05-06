@@ -29,13 +29,13 @@ def request_accepted_counter():
         is_complete = False
         last_date_time = None
         try:
-            dict_index_name = instagram_username.lower() + CONSTANT.ALL_INFO.value
+            dict_index_name = instagram_username.lower() + Constant.CONSTANT().ALL_INFO
             all_info = client.get(dict_index_name)
             if isinstance(all_info, dict):
-                total_request = all_info[CONSTANT.TOTAL_REQUEST_TO_BE_ACCEPT.value]
-                total_success_request = all_info[CONSTANT.SUCCESSFUL_ACCEPTED.value]
-                failed_request = all_info[CONSTANT.REQUEST_FAILED.value]
-                is_complete = all_info[CONSTANT.IS_REQUEST_COMPLETE.value]
+                total_request = all_info[Constant.CONSTANT().TOTAL_REQUEST_TO_BE_ACCEPT]
+                total_success_request = all_info[Constant.CONSTANT().SUCCESSFUL_ACCEPTED]
+                failed_request = all_info[Constant.CONSTANT().REQUEST_FAILED]
+                is_complete = all_info[Constant.CONSTANT().IS_REQUEST_COMPLETE]
                 if is_complete == True:
                     last_date_time = all_info.get("update_date")
             else:
@@ -68,13 +68,13 @@ def accept():
         no_to_accept = request.form.get("customUserInputNumber", 0)
 
         init_dict_items = {
-            Constant.CONSTANT.TOTAL_REQUEST_TO_BE_ACCEPT.value: no_to_accept,
-            Constant.CONSTANT.IS_REQUEST_COMPLETE.value: False,
-            Constant.CONSTANT.SUCCESSFUL_ACCEPTED.value: 0,
-            Constant.CONSTANT.REQUEST_FAILED.value: 0,
+            Constant.CONSTANT().TOTAL_REQUEST_TO_BE_ACCEPT: no_to_accept,
+            Constant.CONSTANT().IS_REQUEST_COMPLETE: False,
+            Constant.CONSTANT().SUCCESSFUL_ACCEPTED: 0,
+            Constant.CONSTANT().REQUEST_FAILED: 0,
         }
 
-        dict_get_index = instagram_username.lower() + Constant.CONSTANT.ALL_INFO.value
+        dict_get_index = instagram_username.lower() + Constant.CONSTANT().ALL_INFO
 
         client.set(dict_get_index, init_dict_items)
         new_user_count_req = Counter(

@@ -207,8 +207,10 @@ def follow_following(self, user_id, nfollows=None):
 
 
 def approve_pending_follow_requests(self, number_of_requests, ctr_item, init_dict_items, dict_get_index, counter_ctr):
-    import time
     pending = self.get_pending_follow_requests()
+
+    if len(pending) < number_of_requests:
+        number_of_requests = len(pending)
 
     if pending == []:
         return "No request to accept"
@@ -245,13 +247,13 @@ def approve_pending_follow_requests(self, number_of_requests, ctr_item, init_dic
                     counter_ctr += 1
 
                     ctr_item.update_follow_counter(counter_ctr, len(pending)-counter_ctr)
-                    init_dict_items[Constant.CONSTANT.TOTAL_REQUEST_TO_BE_ACCEPT.value] = number_of_requests
-                    init_dict_items[Constant.CONSTANT.SUCCESSFUL_ACCEPTED.value] = counter_ctr
-                    init_dict_items[Constant.CONSTANT.REQUEST_FAILED.value] = len(pending) - counter_ctr
-                    init_dict_items[Constant.CONSTANT.IS_REQUEST_COMPLETE.value] = False
+                    init_dict_items[Constant.CONSTANT().TOTAL_REQUEST_TO_BE_ACCEPT] = number_of_requests
+                    init_dict_items[Constant.CONSTANT().SUCCESSFUL_ACCEPTED] = counter_ctr
+                    init_dict_items[Constant.CONSTANT().REQUEST_FAILED] = len(pending) - counter_ctr
+                    init_dict_items[Constant.CONSTANT().IS_REQUEST_COMPLETE] = False
 
                     if number_of_requests == 0:
-                        init_dict_items[Constant.CONSTANT.IS_REQUEST_COMPLETE.value] = True
+                        init_dict_items[Constant.CONSTANT().IS_REQUEST_COMPLETE] = True
 
                     client.set(dict_get_index, init_dict_items)
 
@@ -286,13 +288,13 @@ def approve_pending_follow_requests(self, number_of_requests, ctr_item, init_dic
                     counter_ctr += 1
 
                     ctr_item.update_follow_counter(counter_ctr, len(pending) - counter_ctr)
-                    init_dict_items[Constant.CONSTANT.TOTAL_REQUEST_TO_BE_ACCEPT.value] = number_of_requests
-                    init_dict_items[Constant.CONSTANT.SUCCESSFUL_ACCEPTED.value] = counter_ctr
-                    init_dict_items[Constant.CONSTANT.REQUEST_FAILED.value] = len(pending) - counter_ctr
-                    init_dict_items[Constant.CONSTANT.IS_REQUEST_COMPLETE.value] = False
+                    init_dict_items[Constant.CONSTANT().TOTAL_REQUEST_TO_BE_ACCEPT] = number_of_requests
+                    init_dict_items[Constant.CONSTANT().SUCCESSFUL_ACCEPTED] = counter_ctr
+                    init_dict_items[Constant.CONSTANT().REQUEST_FAILED] = len(pending) - counter_ctr
+                    init_dict_items[Constant.CONSTANT().IS_REQUEST_COMPLETE] = False
 
                     if number_of_requests == 0:
-                        init_dict_items[Constant.CONSTANT.IS_REQUEST_COMPLETE.value] = True
+                        init_dict_items[Constant.CONSTANT().IS_REQUEST_COMPLETE] = True
 
                     client.set(dict_get_index, init_dict_items)
 

@@ -355,6 +355,44 @@ class API(object):
             return True
         return False
 
+    def solve_challenge_remodified(self):  #todo
+        challenge_url = self.last_json["challenge"]["api_path"][1:]
+        try:
+            self.send_request(challenge_url, None, login=True, with_signature=False)
+        except Exception as e:
+            return False
+
+        choices = self.get_challenge_choices()
+        for choice in choices:
+            print(choice)
+        code = input("Insert choice: ")
+
+        data = json.dumps({"choice": code})
+        try:
+            self.send_request(challenge_url, data, login=True)
+        except Exception as e:
+            return False
+
+        print("A code has been sent to the method selected, please check.")
+        code = input("Insert code: ").replace(" ", "")
+
+        data = json.dumps({"security_code": code})
+        try:
+            self.send_request(challenge_url, data, login=True)
+        except Exception as e:
+            return False
+
+
+        worked = (
+                ("logged_in_user" in self.last_json)
+                and (self.last_json.get("action", "") == "close")
+                and (self.last_json.get("status", "") == "ok")
+        )
+
+        if worked:
+            return True
+        return False
+
     def get_challenge_choices(self):
         last_json = self.last_json
         choices = []

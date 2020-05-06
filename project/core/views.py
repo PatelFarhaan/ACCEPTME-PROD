@@ -36,6 +36,8 @@ def index():
         resp = bot_obj.login(username=instagram_username, password=instagram_password, ask_for_code=True)
         cl_obj = client.get(instagram_username)
 
+        print(resp)
+
         if cl_obj.get("bot_obj"):
             client.set(instagram_username, cl_obj)
         else:
@@ -78,6 +80,7 @@ def verify_code():
 
         resp = api_obj.two_factor_auth_remodified(code, api_obj)
 
+
         if resp:
             import time
             api_obj.is_logged_in = True
@@ -90,9 +93,11 @@ def verify_code():
                 login_user(user=user)
                 return redirect(url_for('users.accept'))
             else:
+                print("here")
                 return redirect(url_for('core.index'))
                 # return render_template("index.html", page="index", errors="Wrong Code", **default_args)
         else:
+            print("here1")
             return redirect(url_for('core.index'))
             # return render_template("index.html", page="index", errors="Wrong Code", **default_args)
 
