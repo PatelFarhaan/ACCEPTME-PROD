@@ -211,7 +211,7 @@ def approve_pending_follow_requests(self, number_of_requests, ctr_item, init_dic
 
     if len(pending) != 200:
         if len(pending) < number_of_requests:
-            number_of_requests = len(pending)
+            number_of_requests = len(pending) + 1
 
     if pending == []:
         return "No request to accept"
