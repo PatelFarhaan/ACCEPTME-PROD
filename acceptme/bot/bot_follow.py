@@ -209,10 +209,10 @@ def follow_following(self, user_id, nfollows=None):
 def approve_pending_follow_requests(self, number_of_requests, ctr_item, init_dict_items, dict_get_index, counter_ctr):
     pending = self.get_pending_follow_requests()
 
-    if len(pending) != 200:
+    if len(pending) != 198:
         if len(pending) < number_of_requests:
-            number_of_requests = len(pending) + 1
-
+            number_of_requests = len(pending)
+            
     if pending == []:
         return "No request to accept"
 
