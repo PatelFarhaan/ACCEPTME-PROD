@@ -1,8 +1,13 @@
 <!doctype html>
 <html lang="en">
+<!-- Designed & Developed by G Rohit
+https://about.me/grohit -->
 
 <head>
+    <title>AcceptMe | Instagram Requests Acceptor </title>
+    <!-- Meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="https://i.postimg.cc/B6kk4MyD/AM-icon.png" />
     <meta name="application-name" content="Pricing | AcceptMe,in">
@@ -15,289 +20,349 @@
         content="Pending,request,instagram,insta,gram,telegram,facebook,gmail,whatsapp,intasgrm,graminsta,user,followers,acceptall,allow,users, pending instagram requests, downloader, insta DP, instagram profile pic, instagram profile, picture, download instagram video, video downloader, Acceptme,Accept,Me">
     <meta name="robots" content="index, follow">
     <meta name="copyright" content="Acceptme.in">
-    <meta name="revisit-after" content="1 week">
+ 
+    <!-- bootsrap -->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- font awesome -->
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
         integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!-- custom css -->
 
-    <title>Request Acceptor | AcceptMe</title>
-    <link rel="stylesheet" href="../static/acceptmestyling.css">
-
-    <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css" />
-    <script src="https://github.hubspot.com/odometer/odometer.js"></script>
-    <!-- default theme -->
-
-
-    <!-- Extra styles -->
-    <style>
-        .update_counter_div {
-            font-size: 40px;
-        }
-
-        .update_message_div {
-            font-size: 25px;
-        }
-    </style>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'acceptmestyling.css') }}">
 </head>
 
-<body class="bg">
-    <div class="content">
-        <div class="container">
-            <!-- Image and text -->
-
-            <nav class="navbar navbar-expand-lg fixed-top navbar-fixed-top">
-                <a class="navbar-brand" href="{{ url_for('core.index') }}">
-                    <img src="https://i.postimg.cc/5NWT002Q/Accept-ME-white.png" alt="accept me logo" width="120px"
-                        height="auto">
-                </a>
-                <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse mobileMenubg" id="navbarCollapse">
-
-                    <ul class="navbar-nav ml-auto text-dark text-center">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ url_for('core.index') }}">Home <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('core.pricing') }}">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('core.faq') }}">FAQ</a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('core.contact') }}">Contact</a>
-                        </li>
-
-                        {% if current_user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('users.logout') }}">Log out</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
-
-            <div class="row mt-5 text-center">
-                <div class="col-md-12">
-
-                    <div class="card-deck m-auto" id="acceptorCardWidth">
-
-                        <div class="card animated slideInUp slow acceptor-card ">
-                            <h3 class="card-header font-body text-center text-warning">Welcome
-                                {{ instagram_username }}!!
-                            </h3>
+<body>
+    <!-- Navbar STARTS -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-fixed-top">
+        <a class="navbar-brand" href="{{ url_for('core.index') }}">
+            <img src="https://i.postimg.cc/5NWT002Q/Accept-ME-white.png" alt="accept me logo" width="120px"
+                height="auto">
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mobileMenubg" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto text-white text-center ">
+                <li class="nav-item">
+                    <a class="nav-link" id="activePage" href="{{ url_for('core.index') }}">Home <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.pricing') }}">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.faq') }}">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.contact') }}">Contact</a>
+                </li>
+                <!-- {% if current_user.is_authenticated and not is_admin %} -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users.logout') }}">Log Out</a>
+                </li>
+                <!-- {% endif %} -->
+                <!-- {% if current_user.is_authenticated and is_admin %} -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin.logout') }}">Admin LogOut</a>
+                </li>
+                <!-- {% endif %} -->
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar ENDS -->
 
 
-                            <label for="FormControlSelectFollowersNo" class="text-white">Select the number of Requests
-                                you want to accept.</label> <br>
-                            <select name="noOfFollowers" class="form-control mb-3" id="FormControlSelectFollowersNo"
-                                onchange="showfield(this.options[this.selectedIndex].value)">
-                                <option value="1000">1K</option>
-                                <option value="2000">2K</option>
-                                <option value="3000">3K</option>
-                                <option value="4000">4K</option>
-                                <option value="5000">5K</option>
-                                <option value="6000">6K</option>
-                                <option value="7000">7K</option>
-                                <option value="8000">8K</option>
-                                <option value="9000">9K</option>
-                                <option value="10000">10K</option>
-                                <option class="text-uppercase" value="custom">Custom</option>
-                                <!-- <option class="text-uppercase">Accept All</option> -->
-                            </select>
-                            <br>
+    <!-- main content STARTS -->
 
-                            <span id="customUserInput">
+    <div class="push"></div>
 
-                            </span>
-                            <br>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col p-2 text-center m-auto">
+                <h3 class="text-white">Select the number of followers you wish to accept and click on start</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-5 text-center">
+            <div class="col-md-8 col-sm-12 col-xs-12 col-lg-6 m-auto">
+                <div class="card-deck m-auto">
 
-                            <div id="counterBlock">
-                                <!--update_div-->
-                                <div id="update_counter_div" class="update_counter_div" style="display: none">0</div>
-                                <div id="update_message_div" class="update_message_div" style="display: none"></div>
+                    <div class="card animated slideInUp slow bg-black ">
+                        <label for="FormControlSelectFollowersNo" class="text-white">Select the number of Requests from
+                            the below dropdown.</label> <br>
+                        <select name="noOfFollowers" class="form-control mb-2 w-75 m-auto"
+                            id="FormControlSelectFollowersNo"
+                            onchange="showfield(this.options[this.selectedIndex].value)">
+                            <option value="1000">1K</option>
+                            <option value="2000">2K</option>
+                            <option value="3000">3K</option>
+                            <option value="4000">4K</option>
+                            <option value="5000">5K</option>
+                            <option value="6000">6K</option>
+                            <option value="7000">7K</option>
+                            <option value="8000">8K</option>
+                            <option value="9000">9K</option>
+                            <option value="10000">10K</option>
+                            <option class="text-uppercase" value="custom">Custom</option>
+                            <!-- <option class="text-uppercase">Accept All</option> -->
+                        </select>
+                        <br>
+
+                        <span id="customUserInput">
+
+                        </span>
+                        <br>
+
+                        <div id="counterBlock">
+                            <!--update_div-->
+                            <div id="update_counter_div" class="update_counter_div" style="display: none">0</div>
+                            <div id="update_message_div" class="update_message_div" style="display: none"></div>
+
+
+                        </div>
+
+
+                        <div id="counter_no">
+
+                        </div>
+
+                        <div>
+                            <!-- start accepting requests button starts-->
+                            <div id="startBlock" class="mb-3">
+                                <button id="startAccepting" class="btn btn-lg btn-action">START</button>
                             </div>
-                            <div id="counter_no">
-
-                            </div>
+                            <!-- start accepting requests button ends-->
 
 
+                            <!-- Stats dashboard start -->
 
-                            <div>
-                                <!-- start accepting requests button starts-->
-                                <div id="startBlock">
-                                    <input type="button" id="startAccepting" class="text-uppercase m-3 accept-req-btn"
-                                        value="Start">
+                            <div id="statsContainer" style="display:none">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3 class="mt-5 text-warning">
+                                                <span id="ig_username">
+                                                    @instagram_username
+                                                </span>
+                                            </h3>
+                                            <p>Accepted Today:</p>
+                                            <h1><i class="fas fa-check-circle"></i> <span
+                                                    id="no_of_request_accepted"></span></h1>
+                                            <p><span id="currentDateAndTime"></span></p>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="row">
+                                        <div class="col">
+                                            <table class="table" id="stats__Table">
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td scope="row" id="no_of_Posts">1500</td>
+                                                        <td id="no_of_followers">1000000</td>
+                                                        <td id="no_of_following">417</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td scope="row">Posts</td>
+                                                        <td>Followers</td>
+                                                        <td>Following</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div> -->
                                 </div>
-                                <!-- start accepting requests button ends-->
-                                <!-- contact block  -->
-                                <div class="card-footer">
-                                    <h4 class="card-text font-body">Facing trouble? Reach out to us for any issues:</h4>
-                                    <a href="mailto:Acceptmeinfo@gmail.com" class="btn pricing-btn" target="_blank">Send
-                                        an email&nbsp;<i class="fas fa-envelope"></i></a>
-
-                                </div>
-                                <!-- contact block ends -->
                             </div>
+
+                            <!-- Stats dashboard ENDS -->
+
+
 
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
-
         </div>
-
-        <div class="push"></div>
-
     </div>
+    <!-- main content ENDS -->
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col m-auto text-center text-white">
+                <h5 class="card-text">Facing trouble? Reach out to us for any issues:</h5>
+                <a href="https://api.whatsapp.com/send?phone=917014716530&text=Hi%20there,%20I%20need%20some%20help%20regading%20AcceptME"
+                    target="_blank" class="btn btn-success btn"> <i class="fab fa-whatsapp    "></i>
+                    Contact us on Whatsapp </a>
+            </div>
+        </div>
+    </div>
+
     {% if not last_day == None %}
-    <div class="bg-white">
+    <div class="bg-white mt-5 mb-5">
         <p class=" p-2 text-center text-dark">Your subscription will end in {{last_day}}.</p>
     </div>
     {% endif %}
+    <div class="push"></div>
+</body>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+ 
+<!-- Foooter starts -->
+
+{{ footer_content|safe }}
+
+<!-- Foooter ENDS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $(".navbar-fixed-top");
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        });
+    });
+</script>
+
+<script type="text/javascript">
+
+    var el_select = document.querySelector('.update_counter_div');
+    var el_select_2 = document.querySelector('.update_message_div');
+    var od = new Odometer({ el: el_select, value: 0, format: '' });
+
+    var update_counter_interval_var;
+    var noOfRequests = 0;
+    var error_view = 0;
+    var resp = 1;
+
+    // added by G Rohit
+    let statsContainer = document.querySelector('#statsContainer');
+    // let statsTable = document.querySelector('#stats__Table');
+    let igUsername = document.querySelector('#ig_username');
+    let totalRequestsAccepeted = document.querySelector('#no_of_request_accepted');
+    // G Rohit
 
 
-    <script type="text/javascript">
-        var el_select = document.querySelector('.update_counter_div');
-        var el_select_2 = document.querySelector('.update_message_div');
-        var od = new Odometer({ el: el_select, value: 0, format: '' });
-    </script>
+    function callback_function(response) {
 
-    <script>
-        var update_counter_interval_var;
-        var noOfRequests = 0;
-        var error_view = 0;
-        var resp = 1;
-        function callback_function(response) {
-            if (response.message != undefined && error_view == 0) {
-                alert(response.message);
-                error_view += 1
+        if (response.message != undefined && error_view == 0) {
+            alert(response.message);
+            error_view += 1
+        } else {
+            message_ = response.successful;
+            update_last_time = response.lastDateTime;
+            instagram_username = response.username
+            if (response.isComplete == true) {
+                el_select.style.display = "none";
+                // el_select_2.style.display = "block";
+                // GR
+                statsContainer.style.display = 'block';
+                igUsername.innerHTML = instagram_username;
+                totalRequestsAccepeted.innerHTML =  message_ ;
+                // GR
+                // el_select_2.innerHTML =
+                //     '<div class="card-body">' +
+                //     '<div class="d-block bg-success p-2 rounded m-3"> ' +
+                //     '<p>Accepted ' + message_ + ' requests Successfully for ' + '@' + instagram_username + ' on AcceptMe.in '
+                // '</div> ' +
+                //     '</div>';
+                clearInterval(update_counter_interval_var);
+                console.log("clear interval");
             } else {
-                message_ = response.successful;
-                update_last_time = response.lastDateTime;
-                instagram_username = response.username
-                if (response.isComplete == true) {
-                    el_select.style.display = "none";
-                    el_select_2.style.display = "block";
-                    el_select_2.innerHTML =
-                    '<div class="card-body">' +
-                        '<div class="d-block bg-success p-2 rounded m-3"> ' +
-                            '<p>Accepted '+ message_ +' requests Successfully for '+ instagram_username +' on AcceptMe.in '
-                        '</div> ' +
-                    '</div>';
-                    clearInterval(update_counter_interval_var);
-                    console.log("clear interval");
-                } else {
-                    var msg = "Total Request: " + response.total + " Success : " + response.successful + " Failed : " + response.failed;
-                    console.log(msg, response.isComplete);
-                    od.update(response.successful);
-                }
+                var msg = "Total Request: " + response.total + " Success : " + response.successful + " Failed : " + response.failed;
+                console.log(msg, response.isComplete);
+                od.update(response.successful);
             }
         }
+    }
 
-        $(function () {
-            $('#startAccepting').click(function (e) {
-                //alert('jq call');
-                e.preventDefault();
-                $('#startBlock').css('display', 'none');
-                $('#counterBlock').css('display', 'block');
+    $(function () {
+        $('#startAccepting').click(function (e) {
+            //alert('jq call');
+            e.preventDefault();
+            $('#startBlock').css('display', 'none');
+            $('#counterBlock').css('display', 'block');
 
-                if ($('#FormControlSelectFollowersNo').val() != "custom") {
-                    noOfRequests = $('#FormControlSelectFollowersNo').val();
-                    $('#customUserInputNumber').val(noOfRequests);
-                } else {
-                    noOfRequests = $('#customUserInputNumber').val();
-                }
-                el_select.style.display = "block";
+            if ($('#FormControlSelectFollowersNo').val() != "custom") {
+                noOfRequests = $('#FormControlSelectFollowersNo').val();
+                $('#customUserInputNumber').val(noOfRequests);
+            } else {
+                noOfRequests = $('#customUserInputNumber').val();
+            }
+            el_select.style.display = "block";
 
-                $.ajax({
-                    type: "POST",
-                    url: '/accept_pending_requests',
-                    data: {
-                        'customUserInputNumber': noOfRequests
-                    },
-                    success: function (resp) {
-                        if (resp == "No request to accept") {
-                            el_select.style.display = "none";
-                            el_select_2.style.display = "block";
-                            el_select_2.innerHTML =
-                                "<div class=''>" +
-                                "<b class='success_cls'>No Pending Request To accept</b>" +
-                                // "<i> "+ resp.lastDateTime + "</i>" +
-                                " </div>";
-                            clearInterval(update_counter_interval_var);
-                        }
-                        console.log(resp)
-                    }
-                });
-
-                setTimeout(function () {
-                    update_counter_interval_var = setInterval(update_counter, 100);
-                }, 10000);
-
-            });
-        });
-        function update_counter() {
             $.ajax({
                 type: "POST",
-                url: '/request_accepted_counter',
-                data: { html: '<p>0</p>' },
-                success: function (response) {
-                    callback_function(response);
+                url: '/accept_pending_requests',
+                data: {
+                    'customUserInputNumber': noOfRequests
                 },
-                fail: function (xhr, textStatus, errorThrown) {
-                    console.log(' : ' + textStatus + ' : ' + errorThrown);
+                success: function (resp) {
+                    if (resp == "No request to accept") {
+                        el_select.style.display = "none";
+                        el_select_2.style.display = "block";
+                        el_select_2.innerHTML =
+                            "<div class=''>" +
+                            "<b class='success_cls'>No Pending Request To accept</b>" +
+                            // "<i> "+ resp.lastDateTime + "</i>" +
+                            " </div>";
+                        clearInterval(update_counter_interval_var);
+                    }
+                    console.log(resp)
                 }
             });
-        }
 
-        var update_time_out = 60 * 60 * 1000; // 5 min
-        var x = setTimeout(function () { clearInterval(update_counter) }, update_time_out);
+            setTimeout(function () {
+                update_counter_interval_var = setInterval(update_counter, 100);
+            }, 10000);
 
-    </script>
-
-    <script>
-        $(function () {
-            $(document).scroll(function () {
-                var $nav = $(".navbar-fixed-top");
-                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-            });
         });
+    });
+    function update_counter() {
+        $.ajax({
+            type: "POST",
+            url: '/request_accepted_counter',
+            data: { html: '<p>0</p>' },
+            success: function (response) {
+                callback_function(response);
+            },
+            fail: function (xhr, textStatus, errorThrown) {
+                console.log(' : ' + textStatus + ' : ' + errorThrown);
+            }
+        });
+    }
 
-        function showfield(name) {
-            if (name == 'custom') document.getElementById('customUserInput').innerHTML = 'Custom: <input type="number" id="customUserInputNumber" name="customUserInputNumber" class="userInputReq mb-3 text-center" placeholder="Enter the followers count" required/>';
-            else document.getElementById('customUserInput').innerHTML = '';
-        }
-    </script>
-    {{ footer_content|safe }}
+    var update_time_out = 60 * 60 * 1000; // 5 min
+    var x = setTimeout(function () { clearInterval(update_counter) }, update_time_out);
 
+</script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
 
+    function showfield(name) {
+        if (name == 'custom') document.getElementById('customUserInput').innerHTML = 'Enter the followers count: <input type="number" id="customUserInputNumber" name="customUserInputNumber" class="userInputReq mb-3 text-center" placeholder="Eg. 250" required/>';
+        else document.getElementById('customUserInput').innerHTML = '';
+    }
+</script>
 
-</body>
+<script src="{{ url_for('static', filename = 'main.js') }}"></script>
+
 </html>

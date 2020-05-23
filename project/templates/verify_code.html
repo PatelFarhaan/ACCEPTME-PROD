@@ -1,16 +1,24 @@
 {% extends "index.html" %}
 {% block content %}
 
-    <form method="POST" class="text-center"
-          name="loginForm" autocomplete="off">
-        <br>
-        <br>
-        <h1>Please enter the verification code sent to you.</h1>
-        <input type="password" class="" id="loginPW"
-               name="userLoginPassword" title="Please enter your password"> <span toggle="#loginPW"
-                                                                                  class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
-    <br>
-     <button type="submit" id="loginBtn" class="loginBtn">Submit</button> <br><br>
-    </form>
+<section class="homepageMainSection mt-3">
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="row">
+      <div class="col-10 m-auto bg-black ">
+        <form method="POST" class="text-center" name="loginForm" autocomplete="off">
+          <br>
+          <br>
+          <h1 class="text-white p-1">Please enter the 2 Factor authentication code sent to you</h1>
+          <input type="password" placeholder="Enter your verification code" id="loginPW" name="userLoginPassword"
+            title="Please enter your password">
+          <br>
+          <br>
+          <br>
+          <button type="submit" id="loginBtn" class="btn-action d-inline-block mt-3 ">Submit</button> <br><br>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

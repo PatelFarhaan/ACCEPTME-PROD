@@ -1,40 +1,167 @@
-{% extends "index.html" %}
-{% block content %}
-    <div class="container text-center">
-        <p class="text-white animated bounceInDown slow display-4 font-heading mt-4 ">Got a question about using AcceptMe? </p>
-        <div class="text-white"> Kindly ensure you have gone thru <a href="faq.html" class="btn-link text-white" target="_blank">FAQ page <i class="fas fa-chevron-circle-right"></i></a> and If you still have any queries, feel free to reach out to us
+<!doctype html>
+<html lang="en">
+<!-- Designed & Developed by G Rohit
+https://about.me/grohit -->
+
+<head>
+    <title>Contact | AcceptMe | Instagram Requests Acceptor </title>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="https://i.postimg.cc/B6kk4MyD/AM-icon.png" />
+    <meta name="application-name" content="Contact | AcceptMe | Instagram Requests Acceptor">
+    <meta name="description"
+        content="Contact us for any issues using our application -  AcceptMe. " />
+    <meta property="og:description"
+        content="Contact us for any issues using our application -  AcceptMe. " />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="keywords"
+        content="Pending,request,instagram,insta,gram,telegram,facebook,gmail,whatsapp,intasgrm,graminsta,user,followers,acceptall,allow,users, pending instagram requests, downloader, insta DP, instagram profile pic, instagram profile, picture, download instagram video, video downloader, Acceptme,Accept,Me">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="Acceptme.in">
+
+    <!-- bootsrap -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- font awesome -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!-- custom css -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'acceptmestyling.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar STARTS -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-fixed-top">
+        <a class="navbar-brand" href="{{ url_for('core.index') }}">
+            <img src="https://i.postimg.cc/5NWT002Q/Accept-ME-white.png" alt="accept me logo" width="120px"
+                height="auto">
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mobileMenubg" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto text-white text-center ">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.index') }}">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.pricing') }}">Pricing</a>
+                </li>
+                <li class="nav-item" id="activePage">
+                    <a class="nav-link" href="{{ url_for('core.faq') }}">FAQ <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.contact') }}">Contact</a>
+                </li>
+                {% if current_user.is_authenticated and not is_admin %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users.logout') }}">Log Out</a>
+                </li>
+                {% endif %}
+                {% if current_user.is_authenticated and is_admin %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin.logout') }}">Admin LogOut</a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
-        <div class="row   d-flex justify-content-center" id="contact-page-top">
-            <div class="col-md-8">
-                <div class="card-deck m-auto" id="contact-card-deck">
-                    <div class="card contact-card animated flip slow">
-                        <h3 class="card-header font-body">Contact us</h3>
-                        <div class="p-3">
-                            <img src="https://i.postimg.cc/R0jDFbP6/rick-and-morty-transparent-background-2.png"
-                                 alt="contact-us-image" class="img-fluid rounded  w-75">
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title font-body"></h2>
-                            <h4 class="card-text font-body">Reach out to us for any issues with <br> Pricing, Subscription or
-                                <Tools></Tools>
-                            </h4>
-                            <div class="">
-                                <span class="btn pricing-btn" target="_blank">Send us the screenshot on
-                                    our whatsapp number <span class="font-weight-bold text-warning">+917014716530</span><i class="fas fa-message"></i></span>
+    </nav>
+    <!-- Navbar ENDS -->
+
+    <!-- main content STARTS -->
+
+     
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col p-4 text-center m-auto">
+                    <h2 class="text-white title">
+                        Got a question about using AcceptMe?</h2>
+                    <p class="text-white">
+                        Kindly ensure you have gone thru <a href="{{ url_for('core.faq') }}" class="btn-link text-white" target="_blank">FAQ page <i class="fas fa-chevron-circle-right"></i></a> and If you still have any queries, feel free to reach out to us.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 text-center m-auto">
+ 
+                        <div class="card contact-card animated flip slow bg-warning">
+                            <h3 class="card-header text-uppercase font-weight-bold">Contact us</h3>
+                            <div class="p-3">
+                                <img src="https://i.postimg.cc/R0jDFbP6/rick-and-morty-transparent-background-2.png"
+                                     alt="contact-us-image" class="img-fluid rounded  w-75">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title "></h2>
+                                <p class="card-text lead font-weight-bold">Reach out to us for any issues with <br> Pricing, Subscription or any technical issues. 
+                                 </p>
+
+                                 <div>
+                                 
+                                 <a href="https://api.whatsapp.com/send?phone=917014716530&text=Hi%20there,%20I%20have%20sent%20you%20the%20payment%20and%20here%20is%20the%20screenshot:%20"
+                                target="_blank" class="btn btn-success btn"> <i class="fab fa-whatsapp    "></i> Contact us on Whatsapp </a>
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <ul class="list-unstyled text-dark small">
+                                    <li> App Owned by Arham Surana and Taresh Goyal
+                                    </li>
+                                    <li> Designed and developed by <a href="https://grohit.com/" class="text-dark" target="_blank">G Rohit</a>
+                                    <li>Backend Development and Deployment done by: <a href="https://patelfarhaan.github.io/" class="text-dark" target="_blank">Farhaan Patel</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <ul class="list-unstyled text-dark small">
-                                <li> App Owned by <a href="https://www.instagram.com/the_boy_has_no_name" class="text-dark" target="_blank">Arham Surana and Taresh Goyal</a>
-                                </li>
-                                <li> Designed and developed by <a href="http://grohit.com/" class="text-dark" target="_blank">G Rohit</a>
-                                <li>Backend Development and Deployment done by: <a href="https://patelfarhaan.github.io/" class="text-dark" target="_blank">Farhaan Patel</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                 
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+
+    <!-- main content ENDS -->
+
     <div class="push"></div>
-{% endblock %}
+</body>
+
+<!-- Foooter starts -->
+
+{{ footer_content|safe }}
+
+<!-- Foooter ENDS -->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $(".navbar-fixed-top");
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        });
+    });
+</script>
+
+<script src="{{ url_for('static', filename = 'main.js') }}"></script>
+
+</html>

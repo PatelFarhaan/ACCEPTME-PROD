@@ -1,8 +1,5 @@
-<footer class="text-center footer">
-    <a href="{{ url_for('core.index') }}" style="text-decoration: none">
-        AcceptMe
-    </a>
-    <span style="color:#ffffff;" id="footer-year">
-        &copy; {{cp_year}}
-    </span>
+<footer>
+    <div>
+        <a href="{{ url_for('core.index') }}">AcceptMe</a> &copy; <span id="currentYear">{{cp_year}}</span>
+    </div>
 </footer>

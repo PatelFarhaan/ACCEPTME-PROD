@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<!-- Designed & Developed by G Rohit
+https://about.me/grohit -->
+
+<head>
+
+    <title>About us | AcceptMe | Instagram Requests Acceptor </title>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="https://i.postimg.cc/B6kk4MyD/AM-icon.png" />
+    <meta name="application-name" content="About us | AcceptMe | Instagram Requests Acceptor">
+    <meta name="description"
+        content="Learn more about AcceptMe. Go through these simple steps to understand how our Application works " />
+    <meta property="og:description"
+        content="Learn more about AcceptMe. Go through these simple steps to understand how our Application works " />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="keywords"
+        content="Pending,request,instagram,insta,gram,telegram,facebook,gmail,whatsapp,intasgrm,graminsta,user,followers,acceptall,allow,users, pending instagram requests, downloader, insta DP, instagram profile pic, instagram profile, picture, download instagram video, video downloader, Acceptme,Accept,Me">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="Acceptme.in">
+ 
+    <!-- bootsrap -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- font awesome -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!-- custom css -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'acceptmestyling.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar STARTS -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-fixed-top">
+        <a class="navbar-brand" href="{{ url_for('core.index') }}">
+            <img src="https://i.postimg.cc/5NWT002Q/Accept-ME-white.png" alt="accept me logo" width="120px"
+                height="auto">
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mobileMenubg" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto text-white text-center ">
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{ url_for('core.index') }}">Home </a>
+                </li>
+                <li class="nav-item"  id="activePage">
+                    <a class="nav-link" href="{{ url_for('core.about') }}">About <span
+                        class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.pricing') }}">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.faq') }}">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('core.contact') }}">Contact</a>
+                </li>
+                {% if current_user.is_authenticated and not is_admin %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users.logout') }}">Log Out</a>
+                </li>
+                {% endif %}
+                {% if current_user.is_authenticated and is_admin %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin.logout') }}">Admin LogOut</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar ENDS -->
+
+   <!-- main content STARTS -->
+
+   <section class="aboutPageMainSection">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-white font-weight-bold">
+                    Acceptme is an efficient website to help you accept all your pending requests on Instagram
+                    profile in a very convenient way. </h3>
+                <p class="text-white lead">Below are the steps which will help you to understand how this works.</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="media bg-white  p-4 rounded shadow-lg">
+                    <span class="mr-3"><i class="fas fa-rupee-sign fa-1x"></i></i></span>
+
+                    <div class="media-body">
+                        <h4 class="mt-0">Step 1: Buy a subscription</h4>
+                        To accept your requests using our tool - AcceptMe, you need to purchase the desired plan
+                        according to your need for your Instagram username. Kindly visit <a
+                            href="{{ url_for('core.pricing') }}" class="text-danger">pricing page</a> to know about
+                        our plans..
+                    </div>
+                </div>
+
+
+                <div class="media bg-white  p-4 rounded shadow-lg mt-4">
+                    <span class="mr-3"><i class="fas fa-check-circle fa-1x"></i></i></span>
+
+                    <div class="media-body">
+                        <h4 class="mt-0">Step 2: Verify your Payment</h4>
+                        After purchasing the desired plan, kindly verify it by sending across the payment screenshot.&nbsp;&nbsp;
+                        <a href="https://api.whatsapp.com/send?phone=917014716530&text=Hi%20there,%20I%20have%20sent%20you%20the%20payment%20and%20here%20is%20the%20screenshot:%20"
+                            target="_blank" class="btn btn-dark btn-sm">Verify Payment now</a>
+                    </div>
+                </div>
+
+                <div class="media bg-white  p-4 rounded shadow-lg mt-4">
+                    <span class="mr-3"><i class="fas fa-sign-in-alt fa-1x"></i></i></span>
+
+                    <div class="media-body">
+                        <h4 class="mt-0">Step 3: Proceed for login</h4>
+                        Once your payment is verified, you will get the access to login. You can login in the acceptor (from home page)using your Instagram username and Password and if an OTP is requested, kindly fill the OTP sent to your device by Instagram.
+                    </div>
+                </div>
+                
+                <div class="media bg-white  p-4 rounded shadow-lg mt-4">
+                    <span class="mr-3"><i class="fas fa-user-plus fa-1x"></i></i></span>
+
+                    <div class="media-body">
+                        <h4 class="mt-0">Step 4: Start Accepting Requests</h4>
+                        After you are successfully logged into our tool, select the number of requests you want to accept and then click Start.
+                    </div>
+                </div>
+
+                <div class="media bg-white  p-4 rounded shadow-lg mt-4">
+                    <span class="mr-3"><i class="fas fa-chart-line fa-1x"></i></i></span>
+
+                    <div class="media-body">
+                        <h4 class="mt-0">Step 5: Number of requests accepted</h4>
+                        As the requests are being accepted the live counter will display the number of requests accepted by constantly refreshing
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col text-center">
+            <a href="{{ url_for('core.pricing') }}" class="btn font-weight-bold text-white bg-grad-purple p-3">Check out our economical plans <i class="fa fa-chevron-right" aria-hidden="true"></i></a> 
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- main content ENDS -->
+
+    <div class="push"></div>
+</body>
+
+<!-- Foooter starts -->
+
+{{ footer_content|safe }}
+
+<!-- Foooter ENDS -->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        $(document).scroll(function () {
+            var $nav = $(".navbar-fixed-top");
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        });
+    });
+</script>
+
+<script src="{{ url_for('static', filename = 'main.js') }}"></script>
+
+</html>

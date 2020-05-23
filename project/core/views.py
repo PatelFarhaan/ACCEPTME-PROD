@@ -113,12 +113,17 @@ def pricing():
 
 @core_blueprint.route('/faq')
 def faq():
-    return render_template('FAQ.html', **default_args)
+    return render_template('faq.html', **default_args)
 
 
 @core_blueprint.route('/contact')
 def contact():
     return render_template('Contact.html', **default_args)
+
+
+@core_blueprint.route('/about')
+def about():
+    return render_template('about.html', **default_args)
 
 
 default_args = {}
